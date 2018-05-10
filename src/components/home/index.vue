@@ -21,8 +21,8 @@
         </mn-card>
 
         <mn-section-btn>
-          <mn-btn :icon="icons.chatbubbleWorking" theme="primary" @click="bubble">Start</mn-btn>
-          <mn-btn theme="secondary-link" @click="$router.push({ name: 'signIn' })">Sign in</mn-btn>
+          <mn-btn :icon="icons.chatbubbleWorking" theme="primary" @click="bubbleClick()">Start</mn-btn>
+          <mn-btn theme="secondary-link" @click="signIn">Sign in</mn-btn>
         </mn-section-btn>
       </mn-section>
     </mn-container>
@@ -30,8 +30,8 @@
 </template>
 
 <script>
-  import Message from 'vue-human/utils/Message'
-
+  import { getCouponList } from '../../axios/coupons'
+  import { SignIn } from '@freshservice/bridge'
   export default {
     data () {
       return {
@@ -41,12 +41,32 @@
       }
     },
     methods: {
-      bubble ($event, button) {
-        button.loading = true
-        setTimeout(() => {
-          button.loading = false
-          Message.create({ message: 'Hi, bubble!' }).show()
-        }, 800)
+      async bubbleClick () {
+        // let promise = this.onAsyncGetCouponList()
+        // promise.then(response => {
+        //   console.info(response, 11111)
+        // })
+        const token = JSON.parse(window.localStorage.getItem('TOCTOKEN'))
+        const city = JSON.parse(window.localStorage.getItem('TOCCITY'))
+        const data = {
+          accesstoken: token.AccessToken,
+          customerGuid: token.CUstomerGuid,
+          cityFlag: city.CityFlag
+        }
+        const response = await getCouponList(data)
+        console.log(response)
+      },
+      async onAsyncGetCouponList () {
+        let data = {
+          accesstoken: undefined,
+          customerGuid: undefined,
+          cityFlag: 'sz',
+          phone: undefined
+        }
+        await getCouponList(data)
+      },
+      signIn () {
+        SignIn.init({test: true}).execute()
       }
     }
   }

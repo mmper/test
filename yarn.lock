@@ -136,6 +136,12 @@
     webpack-hot-middleware "^2.20.0"
     webpack-merge "^4.1.1"
 
+"@freshservice/bridge@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@freshservice/bridge/-/bridge-1.2.8.tgz#eab7a935bcd5981ebf5bf73475d1ca8158ca9e69"
+  dependencies:
+    axios "^0.17.1"
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -412,7 +418,7 @@ aws4@^1.2.1, aws4@^1.6.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.7.0.tgz#d4d0e9b9dbfca77bf08eeb0a8a471550fe39e289"
 
-axios@^0.17.0:
+axios@^0.17.0, axios@^0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.17.1.tgz#2d8e3e5d0bdbd7327f91bc814f5c57660f81824d"
   dependencies:

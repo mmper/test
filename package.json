@@ -12,6 +12,7 @@
     "first": "yarn install && yarn run git"
   },
   "dependencies": {
+    "@freshservice/bridge": "^1.2.8",
     "vue-human": "^2.8.2"
   },
   "devDependencies": {
